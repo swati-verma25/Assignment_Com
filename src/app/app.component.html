@@ -1,0 +1,78 @@
+
+<div class="main_content">
+  <div class="search-bar">
+    <input placeholder="search user" type="text" [ngModel]="searchText" (ngModelChange)="onSearchChange($event)" />
+  </div>
+<div class="container">
+<table matSort (matSortChange)="sortData($event)" class="styled-table">
+  <thead>
+    <tr>
+      <th mat-sort-header="name" resizable>Name</th>
+      <th mat-sort-header="username" resizable>UserName</th>
+      <th mat-sort-header="email"  resizable>Email</th>
+      <th mat-sort-header="website"  resizable>Website</th>
+      <th mat-sort-header="edit"  resizable>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of userResult" class="active-row table-row">
+      <td class="table-cell" >{{user.name}}</td>
+      <td >{{user.username}}</td>
+      <td>{{user.email}}</td>
+      <td>{{user.website}}</td>
+      <td><button type="button" class="edit-icon" title="Edit User" (click)="openDialog(user)"> 
+        <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+        viewBox="0 0 23 23" style="enable-background:new 0 0 23 23;" xml:space="preserve">
+     <g>
+       <g>
+         <path d="M17.1,1.4l4.5,4.5L7.1,20.4l-5.8,1.3l1.3-5.8L17.1,1.4 M17.1,0l-0.7,0.7L1.9,15.2l-0.2,0.2l-0.1,0.3l-1.3,5.8L0,23
+           l1.5-0.3l5.8-1.3l0.3-0.1l0.2-0.2L22.3,6.6L23,5.9l-0.7-0.7l-4.5-4.5L17.1,0L17.1,0z"/>
+       </g>
+       <g>
+         <polygon points="1.9,16 2.6,15.2 7.7,20.3 7,21 		"/>
+       </g>
+       <g>
+         <polygon points="13.3,4.4 14,3.7 19.3,9 18.6,9.7 		"/>
+       </g>
+     </g>
+     </svg>
+     
+        </button>
+        <button type="button" class="edit-icon" title="Delete User" (click)="delete(user)">
+          <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+          viewBox="0 0 22 23" style="enable-background:new 0 0 22 23;" xml:space="preserve">
+       <g>
+         <g>
+           <g>
+             <path d="M19.3,23H2.7L1.6,2.2h18.8L19.3,23z M3.6,22h14.8l1-18.7H2.7L3.6,22z"/>
+           </g>
+           <g>
+             <rect x="0.1" y="2.2" width="21.8" height="1"/>
+           </g>
+         </g>
+         <g>
+           <g>
+             <rect x="10.5" y="6.7" width="1" height="11.7"/>
+           </g>
+           <g>
+             <rect x="7" y="6.7" width="1" height="11.7"/>
+           </g>
+           <g>
+             <rect x="14" y="6.7" width="1" height="11.7"/>
+           </g>
+         </g>
+         <g>
+           <polygon points="15.8,3.1 14.8,3.1 14.8,1 7.2,1 7.2,3.1 6.2,3.1 6.2,0 15.8,0 		"/>
+         </g>
+       </g>
+       </svg>
+       
+          </button>
+      </td>
+    </tr></tbody>
+  </table>
+  </div>
+  <div class="search-bar">
+   <button (click)="addUser()" class="button"  title="Add User"> Add User</button>
+  </div>
+</div>
